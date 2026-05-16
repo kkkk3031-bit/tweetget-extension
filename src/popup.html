@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TweetGet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/popup.css" />
+</head>
+<body>
+  <div class="shell">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </div>
+        <span class="brand-name">TweetGet</span>
+      </div>
+      <span class="version-badge">v1.5</span>
+    </header>
+
+    <!-- Auto-hint -->
+    <p class="hint">Download buttons appear automatically on every tweet with media while you browse <strong>X / Twitter</strong>.</p>
+
+    <!-- Divider -->
+    <div class="divider"><span>or paste a tweet URL</span></div>
+
+    <!-- Input -->
+    <div class="input-wrap">
+      <svg class="input-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      <input id="urlInput" type="url" placeholder="https://x.com/user/status/…" autocomplete="off" spellcheck="false" />
+    </div>
+
+    <!-- Error -->
+    <div id="errorBox" class="error-box" style="display:none"></div>
+
+    <!-- CTA Button -->
+    <button id="fetchBtn" class="fetch-btn">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Get Tweet
+    </button>
+
+    <!-- Result Card -->
+    <div id="resultCard" class="result-card" style="display:none">
+      <div class="result-thumb-row">
+        <div class="result-info">
+          <div id="resultTitle" class="result-title"></div>
+          <div id="resultMeta" class="result-meta"></div>
+        </div>
+      </div>
+      <div id="actionRow" class="action-row"></div>
+    </div>
+
+    <!-- Progress -->
+    <div id="progressWrap" class="progress-wrap" style="display:none">
+      <div class="progress-track">
+        <div id="progressBar" class="progress-fill"></div>
+      </div>
+      <div id="progressLabel" class="progress-label">Starting…</div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="footer-credit">
+        Programmed by
+        <a href="https://x.com/KhaledQ84Ever" target="_blank" class="footer-link">@KhaledQ84Ever</a>
+      </span>
+    </footer>
+
+  </div>
+  <script src="popup.js" type="module"></script>
+</body>
+</html>
