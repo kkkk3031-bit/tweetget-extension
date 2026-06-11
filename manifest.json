@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "TweetGet Downloader",
   "description": "Download videos and images from Twitter/X — powered by tweetget-production.up.railway.app",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "action": {
     "default_popup": "src/popup.html",
     "default_title": "TweetGet Downloader"
@@ -29,9 +29,16 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://twitter.com/*", "https://x.com/*"],
-      "js": ["src/content.js"],
-      "css": ["src/styles/inject.css"],
+      "matches": [
+        "https://twitter.com/*",
+        "https://x.com/*"
+      ],
+      "js": [
+        "src/content.js"
+      ],
+      "css": [
+        "src/styles/inject.css"
+      ],
       "run_at": "document_idle"
     }
   ],

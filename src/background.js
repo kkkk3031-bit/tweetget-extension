@@ -15,10 +15,18 @@ ext.contextMenus.onClicked.addListener((info, tab) => {
 });
 
 function sanitize(name) {
-  return (name || 'download')
-    .replace(/[^\w.\-]/g, '_')
-    .replace(/_+/g, '_')
-    .replace(/^_|_$/g, '') || 'download';
+  // Keep Unicode (Arabic etc); strip only Windows/Chrome-forbidden characters.
+  let s = String(name ?? '')
+    .replace(/[<>:"/\\|?*\u0000-\u001f\u007f]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const i = s.lastIndexOf('.');
+  const hasExt = i >= 0 && s.length - i <= 6;
+  let stem = (hasExt ? s.slice(0, i) : s).replace(/^[. ]+|[. ]+$/g, '');
+  const ext = hasExt ? s.slice(i) : '';
+  if (/^(CON|PRN|AUX|NUL|COM[1-9]|LPT[1-9])$/i.test(stem)) stem = '_' + stem;
+  if (!stem) stem = 'download';
+  return stem.slice(0, 150) + ext;
 }
 
 ext.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
